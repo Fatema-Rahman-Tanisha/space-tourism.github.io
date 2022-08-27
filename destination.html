@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+  <link rel="stylesheet" href="style.css">
+  <title>Frontend Mentor | Space tourism website</title>
+  <style> 
+    body {
+      font-family: 'Raleway', sans-serif;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      background-image: url('./assets/destination/background-destination-desktop.jpg');
+    }</style>
+</head>
+<body class="w-full h-screen bg-black">
+  <header class="w-full h-20 flex justify-center items-center mt-[30px]">
+    <nav class="shadow w-full h-[90%] text-white flex justify-between px-4 items-center">
+      <img src="./assets/shared/logo.svg" class="logo h-[50%]" alt="logo">
+      <img id="burger" src="./assets/shared/icon-hamburger.svg" alt="" class="md:hidden">
+      <ul class="hidden md:flex justify-center items-center gap-16">
+        <li class="text-lg hover:border-b-2 border-white "><a href="./index.html">00<span
+              class="text-slate-300 uppercase px-1"> Home </span></a> </li>
+        <li class="text-lg hover:border-b-2 border-white "><a href="./destination.html">01<span
+              class="text-slate-300 uppercase px-1">
+              destination </span> </a> </li>
+        <li class="text-lg hover:border-b-2 border-white "> <a href="./crew.html"> 02<span
+              class="text-slate-300 uppercase px-1">crew</span> </a> </li>
+        <li class="text-lg hover:border-b-2 border-white "> <a href="./technology.html"> 02<span
+              class="text-slate-300 uppercase px-1">technology</span> </a> </li>
+      </ul>
+      <ul id="mobileNav" class="lg:hidden hidden flex justify-center items-center gap-12 flex-col w-[80vw] h-[50vh] bg-[#384c70]  absolute top-24 left-6 ">
+        <li class="text-lg hover:border-b-2 border-white "><a href="./index.html">00 Home </a> </li>
+        <li class="text-lg hover:border-b-2 border-white "><a href="./destination.html">01 destination</a> </li>
+        <li class="text-lg hover:border-b-2 border-white "> <a href="./crew.html"> 02 crew</a> </li>
+        <li class="text-lg hover:border-b-2 border-white "> <a href="./technology.html"> 03 technology</a> </li>
+      </ul>
+    </nav>
+  </header>
+
+    <p class="text-slate-300 text-lg py-3 sm:text-xl text-center w-full py-7">01 PICK YOUR DESTINATION</p>
+
+<main class="w-full h-[90vh] flex justify-evenly flex-col items-center md:flex-row">
+ 
+  <img id="planetimg" src="./assets/destination/image-moon.png" class="w-[65%] sm:w-[35%] lg:w-[25%] block" alt="">
+  <div class="content flex flex-col justify-evenly items-center md:items-start w-full  h-[65%] md:h-[60%] md:w-[45%] xl:w-[30%]">
+ <ul class="flex justify-evenly items-center  xl:w-1/2 gap-3  font-['Bellefair']">
+  <li class="text-[#d2d8f9] hover:text-white hover:border-b-2 border-white uppercase" id="0" onclick="change(0)">Moon</li>
+  <li class="text-[#d2d8f9] hover:text-white hover:border-b-2 border-white uppercase" id="1" onclick="change(1)">Mars</li>
+  <li class="text-[#d2d8f9] hover:text-white hover:border-b-2 border-white uppercase" id="2" onclick="change(2)">Europa</li>
+  <li class="text-[#d2d8f9] hover:text-white hover:border-b-2 border-white uppercase" id="3" onclick="change(3)">titan</li>
+</ul><h1 class="text-7xl lg:text-[10rem] text-white font-['Bellefair'] " id="planetName">Moon</h1>
+<p class="text-[#d2d8f9] w-[87%] text-xs leading-6 text-center md:text-left lg:leading-7 py-3 sm:text-lg  font-['Bellefair']" id="desc"> See our planet as you’ve never seen it before. A perfect relaxing trip away to help regain perspective and come back refreshed. While you’re there, take in some history by visiting the Luna 2 and Apollo 11 landing sites.</p>   
+  <div class="flex flex-col  font-['Bellefair'] md:flex-row md:h-28 h-38 w-[85%] justify-around items-center h-[10rem] border-t-[1px] border-[gray]">
+<div class="distance w-full h-[40%] md:w-1/2 sm:h-full flex flex-col justify-evenly items-center -2">
+  <p class="text-[#d2d8f9] text-lg uppercase">avg. distance</p>
+  <h2 class="text-3xl text-white uppercase" id="distance">384,400 KM</h2>
+</div>
+<div class="distance w-full h-[40%] md:w-1/2 sm:h-full flex flex-col justify-evenly items-center -2">
+  <p class="text-[#d2d8f9] text-lg uppercase">EST. TRAVEL TIME</p>
+  <h2 class="text-3xl text-white uppercase" id="time">3 days</h2>
+</div>
+</div>
+  </div>
+
+</main>
+<div class="parent flex w-full justify-center items-center my-5 ">
+
+</div>
+<script>
+  function change(sno) {
+    xhr = new XMLHttpRequest()
+    xhr.open('GET','data.json', true)
+     xhr.send()
+      xhr.onload = function() {
+      var data = JSON.parse(this.responseText);
+      document.getElementById('planetName').innerHTML = data.destinations[sno].name
+      document.getElementById('desc').innerHTML = data.destinations[sno].description
+      document.getElementById('distance').innerHTML = data.destinations[sno].distance
+      document.getElementById('time').innerHTML = data.destinations[sno].travel
+      planetimg =document.getElementById('planetimg')
+      planetimg.setAttribute('src' , data.destinations[sno].images.webp)
+      
+    }
+  
+  }
+  burger.onclick = function () {
+    document.querySelector('#mobileNav').classList.toggle('hidden')
+  }
+</script>
+</body>
+
+</html>

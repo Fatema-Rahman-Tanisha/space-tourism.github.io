@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+  <title>Frontend Mentor | Space tourism website</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+
+<style> 
+  body {
+    font-family: 'Raleway', sans-serif;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+
+  .shadow {
+    /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.28);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(2.6px);
+    -webkit-backdrop-filter: blur(3.6px);
+  }
+
+body {
+    background-image: url('./assets/home/background-home-desktop.jpg');
+  }
+@media (max-width: 640px) {
+  body {
+    background-image: url('./assets/home/background-home-mobile.jpg');
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    background-image: url('./assets/home/background-home-tablet.jpg');
+  }
+}</style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="w-full h-screen">
+  <header class="w-full h-20 flex justify-center items-center mt-[30px]">
+    <nav class="shadow w-full h-[90%] text-white flex justify-between px-4 items-center">
+      <img src="./assets/shared/logo.svg" class="logo h-[50%]" alt="logo">
+      <img id="burger" src="./assets/shared/icon-hamburger.svg" alt="" class="md:hidden">
+      <ul class="hidden md:flex justify-center items-center gap-16">
+        <li class="text-lg hover:border-b-2 border-white "><a href="./index.html">00<span
+              class="text-slate-300 uppercase px-1"> Home </span></a> </li>
+        <li class="text-lg hover:border-b-2 border-white "><a href="./destination.html">01<span
+              class="text-slate-300 uppercase px-1">
+              destination </span> </a> </li>
+        <li class="text-lg hover:border-b-2 border-white "> <a href="./crew.html"> 02<span
+              class="text-slate-300 uppercase px-1">crew</span> </a> </li>
+        <li class="text-lg hover:border-b-2 border-white "> <a href="./technology.html"> 02<span
+              class="text-slate-300 uppercase px-1">technology</span> </a> </li>
+      </ul>
+      <ul id="mobileNav" class="lg:hidden hidden flex justify-center items-center gap-12 flex-col w-[80vw] h-[50vh] bg-[#384c70]  absolute top-24 left-6 ">
+        <li class="text-lg hover:border-b-2 border-white "><a href="./index.html">00 Home </a> </li>
+        <li class="text-lg hover:border-b-2 border-white "><a href="./destination.html">01 destination</a> </li>
+        <li class="text-lg hover:border-b-2 border-white "> <a href="./crew.html"> 02 crew</a> </li>
+        <li class="text-lg hover:border-b-2 border-white "> <a href="./technology.html"> 03 technology</a> </li>
+      </ul>
+    </nav>
+  </header>
+  <main class="w-full h-[80%]  flex flex-col justify-between items-center md:flex-row sm:justify-around">
+    <div class="text w-full h-[60%] flex justify-center items-center gap-5 flex-col md:w-[50%] md:h-full">
+      <p class="text-gray-300 text-lg uppercase sm:text-xl">So, you want to travel to</p>
+      <h3 class="text-white text-7xl uppercase italic lg:text-[9.5rem] font-['Bellefair']">Space</h3>
+      <p class="text-slate-300 w-[87%] text-xs leading-6 text-center sm:text-lg"> Let’s face it; if you want to go to space, you
+        might as well genuinely go to
+        outer space and not hover kind of on the edge of it. Well sit back, and relax
+        because we’ll give you a truly out of this world experience!</p>
+    </div>
+    <div class="imgBox w-full h-[30%] flex justify-center items-start sm:w-[30%] md:h-full sm:items-center">
+      <div class="imgContent w-[130px] h-[130px] bg-white rounded-full uppercase flex justify-center items-center sm:w-[220px] sm:h-[220px] lg:w-[340px] lg:h-[340px]">
+        <p class="text-xl">Explore</p>
+      </div>
+    </div>
+  </main>
+  <script>
+    burger.onclick = function () {
+      document.querySelector('#mobileNav').classList.toggle('hidden')
+    }
+  </script>
+
+</body>
+
+</html>

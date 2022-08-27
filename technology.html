@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+  <link rel="stylesheet" href="style.css">
+  <title>Frontend Mentor | Space tourism website</title>
+  <style>
+    body , .imgbox{
+      font-family: 'Raleway', sans-serif;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+
+      background-blend-mode: multiply;
+      /* background-attachment: fixed; */
+    
+    } 
+    body{ 
+      background-attachment: fixed;
+      background-image: url('./assets/technology/background-technology-desktop.jpg');
+    }
+      .inactive{
+        background-color: transparent;
+        color: #d2d8f9;
+      }
+  </style>
+</head>
+
+<body class="w-full h-screen ">
+  <header class="w-full h-20 flex justify-center items-center mt-[30px]">
+    <nav class="shadow w-full h-[90%] text-white flex justify-between px-4 items-center">
+      <img src="./assets/shared/logo.svg" class="logo h-[50%]" alt="logo">
+      <img id="burger" src="./assets/shared/icon-hamburger.svg" alt="" class="md:hidden">
+      <ul class="hidden md:flex justify-center items-center gap-16">
+        <li class="text-lg hover:border-b-2 border-white "><a href="./index.html">00<span
+              class="text-slate-300 uppercase px-1"> Home </span></a> </li>
+        <li class="text-lg hover:border-b-2 border-white "><a href="./destination.html">01<span
+              class="text-slate-300 uppercase px-1">
+              destination </span> </a> </li>
+        <li class="text-lg hover:border-b-2 border-white "> <a href="./crew.html"> 02<span
+              class="text-slate-300 uppercase px-1">crew</span> </a> </li>
+        <li class="text-lg hover:border-b-2 border-white "> <a href="./technology.html"> 02<span
+              class="text-slate-300 uppercase px-1">technology</span> </a> </li>
+      </ul>
+      <ul id="mobileNav" class="lg:hidden hidden flex justify-center items-center gap-12 flex-col w-[80vw] h-[50vh] bg-[#384c70]  absolute top-24 left-6 ">
+        <li class="text-lg hover:border-b-2 border-white "><a href="./index.html">00 Home </a> </li>
+        <li class="text-lg hover:border-b-2 border-white "><a href="./destination.html">01 destination</a> </li>
+        <li class="text-lg hover:border-b-2 border-white "> <a href="./crew.html"> 02 crew</a> </li>
+        <li class="text-lg hover:border-b-2 border-white "> <a href="./technology.html"> 03 technology</a> </li>
+      </ul>
+    </nav>
+  </header>
+  <p class="text-lg text-[#d2d8f9] text-center">03 Space launch 101</p>
+  <main class="flex flex-col justify-center items-center w-full h-[105vh] xl:flex-row-reverse xl:items-start xl:h-[70vh] ">
+    <div id="TechImg" class="imgbox w-full mt-4 h-[45%] md:h-[55%] lg:w-[60vw] lg:h-[75%] xl:w-[40%] xl:h-full" 
+    style="background-image: url('./assets/technology/image-space-capsule-portrait.jpg');">
+
+      </div>
+    <div class="content w-full h-[95vh] mt-4 flex flex-col justify-center items-center lg:w-[50%] xl:h-full xl:flex-row ">
+<ul class="flex justify-center items-center gap-3 lg:py-4 xl:flex-col xl:justify-start xl:items-start bg- xl:h-[40%] xl:w-28">
+  <button class="w-12 h-12 bg-transparant border-[1px] border-[#d2d8f9] rounded-full text-[#d2d8f9] lg:w-16 lg:h-16 hover:bg-white hover:text-black " id="1">1</button>
+  <button class="w-12 h-12 bg-transparant border-[1px] border-[#d2d8f9] rounded-full text-[#d2d8f9] lg:w-16 lg:h-16 hover:bg-white hover:text-black " id="2">2</button>
+  <button class="w-12 h-12 bg-transparant border-[1px] border-[#d2d8f9] rounded-full text-[#d2d8f9] lg:w-16 lg:h-16 hover:bg-white hover:text-black " id="3">3</button>
+</ul>
+<div class="textbox w-full h-[90%] flex flex-col justify-start pt-5 items-center gap-3 xl:h-[60%] xl:w-[65%] ">
+  <div class="headingPart w-full h-[10%]  flex justify-center items-center gap-2 flex-col">
+  <p  class="text-lg text-[#d2d8f9]">THE TERMINOLOGY...</p>
+  <p  class="text-2xl text-[#fff] lg:text-4xl" id="n">Space capsule </p>
+  </div>
+<p id="para" class="w-[80%] leading-8 text-md sm:text-lg sm:leading-9 text-[#d2d8f9] lg:w-full xl:w-[90%] lg:py-5">
+  A space capsule is an often-crewed spacecraft that uses a blunt-body reentry capsule to reenter the Earth's atmosphere without wings. Our capsule is where you'll spend your time during the flight. It includes a space gym, cinema, and plenty of other activities to keep you entertained.
+</p>
+</div>
+    </div>
+  </main>
+  <script>
+    var xhr = new XMLHttpRequest()
+    xhr.open('GET','data.json',true)
+    xhr.onload = function () {
+      var data = JSON.parse(this.responseText);
+      console.log(data.technology)
+   one= document.getElementById('1')
+   two= document.getElementById('2')
+   three= document.getElementById('3')
+
+
+   one.onclick = function () {
+    n.innerHTML = data.technology[0].name
+    para.innerHTML = data.technology[0].description
+    document.getElementById('TechImg').style.backgroundImage = `url('${data.technology[0].images.portrait}')`
+
+    two.style.backgroundColor ="transparent"
+    three.style.backgroundColor ="transparent"
+
+    two.style.color ="#d2d8f9"
+    three.style.color ="#d2d8f9"
+
+    one.style.backgroundColor = 'white'
+    one.style.color = 'black'
+   }
+
+
+   two.onclick = function () {
+    n.innerHTML = data.technology[1].name
+    para.innerHTML = data.technology[1].description
+    document.getElementById('TechImg').style.backgroundImage = `url('${data.technology[1].images.portrait}')`
+
+    one.style.backgroundColor ="transparent"
+    three.style.backgroundColor ="transparent"
+
+    one.style.color ="#d2d8f9"
+    three.style.color ="#d2d8f9"
+
+    two.style.backgroundColor = 'white'
+    two.style.color = 'black'
+
+   }
+
+
+   three.onclick = function () {
+    n.innerHTML = data.technology[2].name
+    para.innerHTML = data.technology[2].description
+    document.getElementById('TechImg').style.backgroundImage = `url('${data.technology[2].images.portrait}')`
+
+    one.style.backgroundColor ="transparent"
+    two.style.backgroundColor ="transparent"
+
+    one.style.color ="#d2d8f9"
+    two.style.color ="#d2d8f9"
+
+    three.style.backgroundColor = 'white'
+    three.style.color = 'black'
+   }
+    }
+  xhr.send()
+  burger.onclick = function () {
+      document.querySelector('#mobileNav').classList.toggle('hidden')
+    }
+  </script>
+</body>
+
+</html>
